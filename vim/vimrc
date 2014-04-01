@@ -1,0 +1,27 @@
+colorscheme darkblue
+syntax on
+set lines=40
+set sw=2
+set expandtab
+set softtabstop=2
+set smarttab
+set autoindent
+set smartindent
+set tabstop=2
+set smartindent
+set noswapfile
+set ruler
+set guifont=Courier_New:h9:cANSI
+set nowrap
+set guioptions=abgimrLtT
+set nocompatible
+set nobackup
+set nowritebackup
+set columns=80
+set whichwrap+=<,>,[,]
+set scrolloff=6
+set list
+set listchars=eol:$,tab:>.
+set ff=dos
+vmap <F11> :-1/^\/\//s///<CR>
+vmap <F12> :-1/^/s//\/\//<CR>
