@@ -1,0 +1,45 @@
+colorscheme monokai
+syntax enable
+set sw=2
+set expandtab
+set softtabstop=2
+set smarttab
+set autoindent
+set smartindent
+set tabstop=2
+set smartindent
+set noswapfile
+set ruler
+set nowrap
+set nocompatible
+set nobackup
+set nowritebackup
+set whichwrap+=<,>,[,]
+set scrolloff=6
+set list
+set listchars=eol:$,tab:>.
+let &t_Co=256
+set statusline=
+set statusline+=%<\                       " cut at start
+set statusline+=%2*[%n%H%M%R%W]%*\        " flags and buf no
+set statusline+=%-40f\                    " path
+set statusline+=%=%1*%y%*%*\              " file type
+set statusline+=%10((%l,%c)%)\            " line and column
+set statusline+=%P                        " percentage of file
+set laststatus=2
+set colorcolumn=80
+filetype on
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+set runtimepath^=~/.vim/bundle/nerdtree
+set runtimepath^=~/.vim/bundle/syntastic
+" set runtimepath^=~/.vim/bundle/node
+let g:ctrlp_custom_ignore = {
+    \ 'dir':  '\.git$\|public$|log\|tmp\|node_modules$',
+    \ 'file': '\.so$\|\.dat$|\.DS_Store$|\.log$|\.tar.gz$|.zip$|.swp$'
+    \ }
+map <C-k><C-b> :NERDTreeToggle<CR>
+map <C-j> :set filetype=javascript<CR>
+set splitbelow
+set splitright
+set mouse=a
+set autoread

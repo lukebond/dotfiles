@@ -1,4 +1,7 @@
 alias ls='ls -FG'
+alias listening='lsof -Pan -iTCP -sTCP:LISTEN'
+alias git-log-graph='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit --date=relative'
+alias uuid="python -c 'import sys,uuid; sys.stdout.write(uuid.uuid4().hex)' | pbcopy && pbpaste && echo"
 
 # Git branch in prompt.
 parse_git_branch() {
