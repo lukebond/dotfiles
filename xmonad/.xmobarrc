@@ -1,19 +1,20 @@
-Config { font = "xft:Ubuntu Mono:bold:size=10"
+-- Config { font = "xft:Ubuntu Mono:bold:size=10"
 -- Config { font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
 -- Config { font = "xft:DejaVu Sans:size=10"
+Config { font = "xft:Fixed:size=10"
        , bgColor = "#444444"
        , fgColor = "white"
-       , position = TopW L 90
+       , position = Top
        , commands = [ Run Weather "EGLC" ["-t","<station>: <tempC>C","-L","5","-H","25","--normal","green","--high","red","--low","deepskyblue"] 36000
-                    , Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
+                    , Run Cpu ["-t", "CPU: <total>%", "-L","3","-H","50","--normal","green","--high","red"] 10
                     , Run Memory ["-t","Mem: <usedratio>%"] 10
                     , Run Swap [] 10
+                    , Run Battery ["-t", "<acstatus>", "-L", "20", "-H", "80", "-l", "red", "-n", "yellow", "-h", "green", "--", "-O", "Batt: <left>%*", "-o", "Batt: <left>%"] 10
                     , Run Date "%a %b %_d %H:%M" "date" 1
-                    , Run Com "~/.xmonad/get-volume" [] "myvolume" 10
                     , Run StdinReader
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%StdinReader% }{ %cpu% | %memory% * %swap% | Vol: %myvolume%    <fc=#ffee00>%date%</fc> | %EGLC%"
+       , template = "%StdinReader% }{ %cpu% | %memory% * %swap% | %battery%    <fc=#ffee00>%date%</fc> | %EGLC%"
        }
 
