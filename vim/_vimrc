@@ -28,10 +28,10 @@ set statusline+=%10((%l,%c)%)\            " line and column
 set statusline+=%P                        " percentage of file
 set laststatus=2
 set colorcolumn=80
+set cursorline
 filetype on
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-set runtimepath^=~/.vim/bundle/nerdtree
-set runtimepath^=~/.vim/bundle/syntastic
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_check_on_open = 1
 " set runtimepath^=~/.vim/bundle/node
 let g:ctrlp_custom_ignore = {
     \ 'dir':  '\.git$\|public$|log\|tmp\|node_modules$',
