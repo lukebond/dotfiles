@@ -4,7 +4,7 @@
 Config { font = "xft:Fixed:size=10"
        , bgColor = "#444444"
        , fgColor = "white"
-       , position = Top
+       , position = TopW L 90
        , commands = [ Run Weather "EGLC" ["-t","<station>: <tempC>C","-L","5","-H","25","--normal","green","--high","red","--low","deepskyblue"] 36000
                     , Run Cpu ["-t", "CPU: <total>%", "-L","3","-H","50","--normal","green","--high","red"] 10
                     , Run Memory ["-t","Mem: <usedratio>%"] 10

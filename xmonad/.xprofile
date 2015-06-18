@@ -1,28 +1,13 @@
-export LIBOVERLAY_SCROLLBAR=0
-xrandr --output DVI-I-1 --auto --left-of DVI-D-1
-xrdb -merge .Xresources
+#!/bin/sh
 
-# Set up an icon tray
-trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --width 10 --transparent true --alpha 0 --tint 0x444444 --height 17 &
-#trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --width 10 --transparent true --tint 0x191970 --height 12 &
-
-# Set the background color
-#xsetroot -solid black
-#/usr/bin/stalonetray &
-
-gnome-screensaver &
-
-if [ -x /usr/bin/gnome-power-manager ] ; then
-   sleep 1
-   gnome-power-manager &
+trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --width 10 --transparent true --alpha 0 --tint 0x444444 --height 17 --monitor 1 &
+if [ -x /usr/bin/nm-applet ] ; then
+  nm-applet &
 fi
 
-#if [ -x /usr/bin/nm-applet ] ; then
-#   nm-applet --sm-disable &
-#fi
-
-/usr/bin/gnome-sound-applet &
-
-eval $(gnome-keyring-daemon --start)
-export GNOME_KEYRING_SOCKET
-export GNOME_KEYRING_PID
+if [ -x /usr/bin/volumeicon ] ; then
+  volumeicon &
+fi
+xbindkeys &
+/usr/bin/xscreensaver -no-splash &
+xset m 3/2 10
