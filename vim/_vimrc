@@ -29,6 +29,9 @@ set statusline+=%P                        " percentage of file
 set laststatus=2
 set colorcolumn=80
 set cursorline
+set number
+set relativenumber
+
 filetype on
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_check_on_open = 1
