@@ -142,6 +142,19 @@ batwidget = lain.widget.bat({
     end
 })
 
+-- VPN
+vpnwidget = wibox.widget.textbox()
+awful.widget.watch("nmcli connection show --active | grep tun0", 16,
+  function (widget, stdout)
+    if stdout == nil or stdout == '' then
+      widget:set_text("VPN: ✓")
+    else
+      widget:set_text("VPN: ✗")
+    end
+  end,
+  vpnwidget
+)
+
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
                     awful.button({ }, 1, function(t) t:view_only() end),
@@ -247,6 +260,8 @@ awful.screen.connect_for_each_screen(function(s)
             pomodoro.widget, pomodoro.icon_widget,
             spr,
             batwidget,
+            spr,
+            vpnwidget,
             spr,
             mytextclock,
             spr,
