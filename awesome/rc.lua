@@ -144,7 +144,7 @@ batwidget = lain.widget.bat({
 
 -- VPN
 vpnwidget = wibox.widget.textbox()
-awful.widget.watch("nmcli connection show --active | grep tun0", 16,
+awful.widget.watch('bash -c "nmcli connection show --active | grep tun0"', 16,
   function (widget, stdout)
     if stdout == nil or stdout == '' then
       widget:set_text("VPN: ✓")
