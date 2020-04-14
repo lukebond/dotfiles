@@ -1,4 +1,6 @@
-colorscheme monokai
+colorscheme jellybeans
+set background=dark
+
 syntax enable
 set sw=2
 set expandtab
@@ -11,6 +13,8 @@ set smartindent
 set noswapfile
 set ruler
 set nowrap
+set linebreak
+set textwidth=80
 set nocompatible
 set nobackup
 set nowritebackup
@@ -41,8 +45,23 @@ let g:ctrlp_custom_ignore = {
     \ 'file': '\.so$\|\.dat$|\.DS_Store$|\.log$|\.tar.gz$|.zip$|.swp$'
     \ }
 map <C-k><C-b> :NERDTreeToggle<CR>
-map <C-j> :set filetype=javascript<CR>
+" map <C-j> :set filetype=javascript<CR>
+autocmd BufNewFile,BufRead Jenkinsfile* set syntax=groovy
+autocmd BufNewFile,BufRead Dockerfile* set syntax=dockerfile
+autocmd BufNewFile,BufRead *.wiki set syntax=markdown
 set splitbelow
 set splitright
 set mouse=a
 set autoread
+
+func! WordProcessorMode() 
+  setlocal formatoptions=1 
+  setlocal noexpandtab 
+  map j gj 
+  map k gk
+  setlocal spell spelllang=en_us 
+  set thesaurus+=/Users/sbrown/.vim/thesaurus/mthesaur.txt
+  set complete+=s
+  set formatprg=par
+  setlocal wrap 
+endfu

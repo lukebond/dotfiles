@@ -143,16 +143,36 @@ batwidget = lain.widget.bat({
 })
 
 -- VPN
-vpnwidget = wibox.widget.textbox()
-awful.widget.watch('bash -c "nmcli connection show --active | grep tun0"', 16,
+vpnwidget = awful.widget.watch('bash -c "nmcli connection show --active | grep tun0"', 16,
   function (widget, stdout, stderr, exitreason, exitcode)
     if exitcode == 0 then
       widget:set_text("VPN: ✓")
     else
       widget:set_text("VPN: ✗")
     end
-  end,
-  vpnwidget
+  end
+)
+
+-- Bluetooth Headphones
+bthwidget = awful.widget.watch('/home/luke/bin/bluetooth.sh status', 17,
+  function (widget, stdout, stderr, exitreason, exitcode)
+    if exitcode == 0 then
+      widget:set_text("🎧: ✓")
+    else
+      widget:set_text("🎧: ✗")
+    end
+  end
+)
+
+-- Bluetooth Speaker
+btswidget = awful.widget.watch('bash -c "DEVICE=speaker /home/luke/bin/bluetooth.sh status"', 17,
+  function (widget, stdout, stderr, exitreason, exitcode)
+    if exitcode == 0 then
+      widget:set_text("🔊: ✓")
+    else
+      widget:set_text("🔊: ✗")
+    end
+  end
 )
 
 -- Create a wibox for each screen and add it
@@ -260,6 +280,12 @@ awful.screen.connect_for_each_screen(function(s)
             pomodoro.widget, pomodoro.icon_widget,
             spr,
             batwidget,
+            spr,
+            bthwidget,
+            spr,
+            spr,
+            btswidget,
+            spr,
             spr,
             vpnwidget,
             spr,
