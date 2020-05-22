@@ -49,6 +49,7 @@ map <C-k><C-b> :NERDTreeToggle<CR>
 autocmd BufNewFile,BufRead Jenkinsfile* set syntax=groovy
 autocmd BufNewFile,BufRead Dockerfile* set syntax=dockerfile
 autocmd BufNewFile,BufRead *.wiki set syntax=markdown
+autocmd FileType go setlocal noexpandtab
 set splitbelow
 set splitright
 set mouse=a
