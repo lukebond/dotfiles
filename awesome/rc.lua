@@ -50,10 +50,6 @@ end
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init(gears.filesystem.get_themes_dir() .. "powerarrow-darker/theme.lua")
 
--- awesome pomodoro widget
-local pomodoro = require("pomodoro/init")
-pomodoro.init()
-
 -- This is used later as the default terminal and editor to run.
 terminal = "xfce4-terminal"
 editor = os.getenv("EDITOR") or "nano"
@@ -277,8 +273,6 @@ awful.screen.connect_for_each_screen(function(s)
 --             mykeyboardlayout,
 --             spr,
             wibox.widget.systray(),
-            spr,
-            pomodoro.widget, pomodoro.icon_widget,
             spr,
             batwidget,
             spr,
