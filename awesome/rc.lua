@@ -48,7 +48,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(gears.filesystem.get_themes_dir() .. "powerarrow-darker/theme.lua")
+beautiful.init("~/.config/awesome/themes/powerarrow-dark/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "xfce4-terminal"
@@ -67,8 +67,8 @@ altkey = "Mod1"
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
     awful.layout.suit.tile,
-    awful.layout.suit.tile.left,
     awful.layout.suit.tile.top,
+    awful.layout.suit.tile.left,
     awful.layout.suit.tile.bottom,
     awful.layout.suit.max,
     awful.layout.suit.max.fullscreen,
@@ -139,7 +139,7 @@ batwidget = lain.widget.bat({
 })
 
 -- VPN
-vpnwidget = awful.widget.watch('bash -c "nmcli connection show --active | grep tun0"', 16,
+vpnwidget = awful.widget.watch('bash -c "nc -vz docs.influxdata.io 443 2>/dev/null"', 16,
   function (widget, stdout, stderr, exitreason, exitcode)
     if exitcode == 0 then
       widget:set_text("VPN: ✓")
@@ -150,7 +150,7 @@ vpnwidget = awful.widget.watch('bash -c "nmcli connection show --active | grep t
 )
 
 -- Bluetooth Headphones
-bthwidget = awful.widget.watch('/home/luke/bin/bluetooth.sh status', 17,
+bthwidget = awful.widget.watch('/home/luke/.local/bin/bluetooth.sh status', 17,
   function (widget, stdout, stderr, exitreason, exitcode)
     if exitcode == 0 then
       widget:set_text("🎧: ✓")
@@ -161,7 +161,7 @@ bthwidget = awful.widget.watch('/home/luke/bin/bluetooth.sh status', 17,
 )
 
 -- Bluetooth Speaker
-btswidget = awful.widget.watch('bash -c "DEVICE=speaker /home/luke/bin/bluetooth.sh status"', 17,
+btswidget = awful.widget.watch('bash -c "DEVICE=speaker /home/luke/.local/bin/bluetooth.sh status"', 17,
   function (widget, stdout, stderr, exitreason, exitcode)
     if exitcode == 0 then
       widget:set_text("🔊: ✓")

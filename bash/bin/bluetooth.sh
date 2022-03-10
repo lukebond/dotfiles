@@ -1,12 +1,18 @@
 #!/bin/bash
-source ~/bin/.bluetooth-devices
+source ~/.local/bin/.bluetooth-devices
 DEVICE="${DEVICE:-headphones}"
 case "${DEVICE}" in
   speaker)
     DEVICE="${DEVICE_SPEAKER}"
     ;;
+  plt)
+    DEVICE="${DEVICE_PLT}"
+    ;;
   headphones)
     DEVICE="${DEVICE_HEADPHONES}"
+    ;;
+  logitech)
+    DEVICE="${DEVICE_LOGITECH}"
     ;;
   *)
     echo "Unsupported device>" && exit 1
